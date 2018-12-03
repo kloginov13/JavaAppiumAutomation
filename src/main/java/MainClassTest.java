@@ -1,4 +1,6 @@
 
+import org.hamcrest.CoreMatchers;
+import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -18,9 +20,16 @@ public class MainClassTest {
     }
 
 
-    @Test
+    @Test @Ignore
     public void testGetCLassNumber(){
         MainClass el = new MainClass();
         assertTrue("Значение "+ el.getClassNumber() + " меньше, чем 45." ,el.getClassNumber()>45);
+    }
+
+    @Test
+    public void testGetClassString(){
+        MainClass el = new  MainClass();
+        String stringFromClass = el.getClassString();
+        Assert.assertThat("В строке "+stringFromClass+" отсутствует искомая подстрока",stringFromClass.toLowerCase(),CoreMatchers.containsString("hello"));
     }
 }
